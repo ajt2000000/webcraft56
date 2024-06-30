@@ -1,59 +1,63 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Play minecraft 1.8 in your browser" />
-		<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
-		<title>EaglercraftX 1.8</title>
-		<meta property="og:locale" content="en-US" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="EaglercraftX 1.8" />
-		<meta property="og:description" content="Play minecraft 1.8 in your browser" />
-		<meta property="og:image" content="favicon.png" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
-		<script type="text/javascript" src="classes.js"></script>
-		<script type="text/javascript">
-			"use strict";
-			window.addEventListener("load", () => {
-				if(document.location.href.startsWith("file:")) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					
-					// %%%%%%%%% launch options %%%%%%%%%%%%
-					
-					const relayId = Math.floor(Math.random() * 3);
-					window.eaglercraftXOpts = {
-						demoMode: false,
-						container: "game_frame",
-						assetsURI: "assets.epk",
-						localesURI: "lang/",
-						worldsDB: "worlds",
-						servers: [
-							/* example: { addr: "wss://8081-catfoolyou-eaglerxserve-3n6l6bz015k.ws-us114.gitpod.io:8081", name: "Local test server" } */
-						],
-						relays: [
-							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
-							{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
-							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
-						]
-					};
-					
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-					
-					var q = window.location.search;
-					if(typeof q === "string" && q.startsWith("?")) {
-						q = new URLSearchParams(q);
-						var s = q.get("server");
-						if(s) window.eaglercraftXOpts.joinServer = s;
-					}
-					
-					main();
-					
-				}
-			});
-		</script>
-	</head>
-	<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
-	</body>
-</html>
+<head>
+<link rel="manifest" href="https://raw.githubusercontent.com/ajt2000000/Eagkle/main/manifest.json"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="icon" href="/image/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+  <script src="/script/install.js"></script>
+<title>Minecraft</title>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(function(registration) {
+    // 登録成功
+    console.log('ServiceWorker の登録に成功しました。スコープ: ', registration.scope);
+  }).catch(function(err) {
+    // 登録失敗
+    console.log('ServiceWorker の登録に失敗しました。', err);
+  });
+}
+</script>
+</head>
+<body>
+<center>
+    <th class="black">
+        <h1>Minecraft ChromeOS Edition Project Wiki</h1>
+      </th>
+<p> このプロジェクトの目標は快適にMinecraft:JAVAをChromebookで遊べるようにする事です</p>
+<br>
+<h3>最新情報</h3>
+<iframe src="whatsnew.html"width="600" height="150"></iframe>
+<br>
+<h3>開発目的</h3>
+<p>Eaglercraftのフォーク版を作って、色んな機能追加しようと考えています</p>
+<p>追加して欲しい機能が有りましたらお問い合わせからお願いします。</p>
+<br>
+<h3>推奨スペック</h3>
+<h2>Chromeがサクサクに動く程度のPC</h2>
+<p>こっちも軽量化に頑張っていますが</p>
+<p>重たいPCではプレイが難しいかも？</p>
+<br>
+<h3>プレイ方法</h3>
+<p>インストールタブからインストール方法を見てください。</p>
+<br>
+<h3>作成の時にお世話になったサイト</h3>
+<a href="https://eaglercraft.com/">EaglerCraft_Projext</a>
+<a title="Eaglercraft-for-JapanProject" href="https://magurock.github.io/Eaglercraft-for-Japan/Normal/">Eaglercraft-for-Japan/Normal/</a>
+<a href="https://www.bing.com/ck/a?!&amp;&amp;p=a34e750b5c341d46JmltdHM9MTcxOTQ0NjQwMCZpZ3VpZD0yMTUxYjczYy05ZGM5LTZkN2ItMmEzMC1hMzljOWM3ZTZjZjcmaW5zaWQ9NTM0MA&amp;ptn=3&amp;ver=2&amp;hsh=3&amp;fclid=2151b73c-9dc9-6d7b-2a30-a39c9c7e6cf7&amp;psq=eaglercraft&amp;u=a1aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj0wX2RsVWNOZE9Maw&amp;ntb=1">【無料マイクラ】誰でも出来る無料WEBマイクラ！【Eaglercraft】（自己責任）</a>
+<a title="Eaglercraft-Japanese" href="https://github.com/U5KUN/Eaglercraft-Japanese" target="_blank" rel="noopener">Eaglercraft-Japanese</a>
+</center>
+
+<center>
+<div class="content">
+<hr>
+<p>この下にボタンが表示されている場合はらくらくインストールができます。</p>
+<button id="installButton" class="button"><span class="material-symbols-outlined">
+    place_item
+    </span></button>
+  <p>表示されていない場合はショートカットを作ってくださいその時に[ウィンドウとして開く]を選択してください。</p>
+  <hr>
+<h3>アプリをインストールした後に開くとゲームが起動します<br />このページからは開けません。</strong></h3>
+<p>オフラインバージョン</p>
+  <a href="https://github.com/ajt2000000/Eagkle/raw/main/DL/DL.zip"><p>ダウンロード</p></a>
+</main>
+  </body>
+</div>
